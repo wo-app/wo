@@ -1,0 +1,55 @@
+#!/usr/bin/env ruby
+require "wo"
+
+module WO
+  class Command < Thor
+    desc "init", "Initialize configure file"
+    def init(url = "")
+      url = url || WO::Client::API_URL
+      token = Client.new(url: url).create_organization.to_json["organization"]["token"]
+
+      File.open(loader.file_full_path, "w") do |f|
+        f.puts "url: #{url}"
+        f.puts "token: #{token}"
+      end
+
+      puts "Created #{loader.file_full_path}"
+    end
+
+    desc "hook", "Print hook sh"
+    def hook(sh)
+      puts Hook.new(sh).hook
+    end
+
+    desc "doing", "Update working on"
+    def doing(repo, branch, user_name)
+      Client.new(url: url).create_doing(
+        token:     token,
+        user_name: user_name,
+        repo:      repo,
+        branch:    branch,
+      )
+    end
+
+    desc "doings", "Show working on in organization"
+    def doings
+      puts Client.new(url: url).doings(token: token).to_timeline
+    end
+
+    private
+
+    def url
+      loader.to_h[:url]
+    end
+
+    def token
+      loader.to_h[:token]
+    end
+
+    def loader
+      @loader ||= Loader.new(ENV["WO_FILE_PATH"])
+    end
+  end
+end
+
+WO::Command.start(ARGV)
