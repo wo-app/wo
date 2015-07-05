@@ -4,7 +4,7 @@ require "wo"
 module WO
   class Command < Thor
     desc "init", "Initialize configure file"
-    def init(url = "")
+    def init(url = nil)
       url = url || WO::Client::API_URL
       token = Client.new(url: url).create_organization.to_json["organization"]["token"]
 
