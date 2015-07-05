@@ -7,7 +7,7 @@ module WO
     end
 
     def doings(options = {})
-      request(:get, "#{@api_url}/doings", Configure.new(options).to_h)
+      request(:get, "#{@api_url}/users", Configure.new(options).to_h)
     end
 
     def create_doing(options = {})

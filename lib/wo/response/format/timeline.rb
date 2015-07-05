@@ -6,10 +6,10 @@ module WO
         # TODO: handle colorize
 
         def to_timeline
-          to_json["doings"].map do |doing|
-            user_name = doing["user"]["name"]
-            repo_branch = "#{doing["repo"]}/#{doing["branch"]}"
-            time = doing["time_ago"]
+          to_json["users"].map do |user|
+            user_name = user["name"]
+            repo_branch = "#{user["recent_repo"]}/#{user["recent_branch"]}"
+            time = user["time_ago"]
 
             sprintf(format, user_name, repo_branch, time)
           end
@@ -22,15 +22,15 @@ module WO
         end
 
         def max_length_user_name
-          @max_length_user_name ||= to_json["doings"].map { |doing| doing["user"]["name"].length }.max
+          @max_length_user_name ||= to_json["users"].map { |user| user["name"].length }.max
         end
 
         def max_length_branch
-          @max_length_branch ||= to_json["doings"].map { |doing| "#{doing["repo"]}/#{doing["branch"]}".length }.max
+          @max_length_branch ||= to_json["users"].map { |user| "#{user["recent_repo"]}/#{user["recent_branch"]}".length }.max
         end
 
         def max_length_time_ago
-          @max_length_time_ago ||= to_json["doings"].map { |doing| "#{doing["time_ago"]}".length }.max
+          @max_length_time_ago ||= to_json["users"].map { |user| "#{user["time_ago"]}".length }.max
         end
 
         def bold
