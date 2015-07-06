@@ -2,6 +2,8 @@ module WO
   class Client
     API_URL = "https://wo-app.herokuapp.com"
 
+    attr_reader :api_url
+
     def initialize(options = {})
       @api_url = options[:url] ? options[:url] : API_URL
     end

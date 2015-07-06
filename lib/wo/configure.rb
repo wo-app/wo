@@ -1,5 +1,7 @@
 module WO
   class Configure
+    attr_reader :token, :repo, :branch, :user_name
+
     def initialize(options = {})
       [:token, :repo, :branch, :user_name].each do |key|
         next unless value = options[key]
