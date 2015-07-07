@@ -15,12 +15,11 @@ describe WO::Configure do
   describe "#to_h" do
     it "returns WO::Response instance" do
       configure_hash = {
-        "organization[token]": "token",
-        "doing[repo]":         "repo",
-        "doing[branch]":       "branch",
-        "user[name]":          "user_name",
+        "organization[token]" => "token",
+        "doing[repo]"         => "repo",
+        "doing[branch]"       => "branch",
+        "user[name]"          => "user_name",
       }
-
 
       expect(configure.to_h).to eq configure_hash
     end
