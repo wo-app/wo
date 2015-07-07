@@ -13,7 +13,7 @@ module WO
     private
 
     def constantize
-      Kernel.const_get("WO").const_get("Hook").const_get(@sh.capitalize)
+      Kernel.const_get("WO").const_get("Hook").const_get(@sh.to_s.capitalize)
     end
   end
 end
