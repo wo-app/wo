@@ -11,10 +11,10 @@ module WO
 
     def to_h
       {
-        "organization[token]": @token,
-        "doing[repo]":         @repo,
-        "doing[branch]":       @branch,
-        "user[name]":          @user_name,
+        "organization[token]" => @token,
+        "doing[repo]"         => @repo,
+        "doing[branch]"       => @branch,
+        "user[name]"          => @user_name,
       }
     end
   end
