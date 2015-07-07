@@ -1,5 +1,9 @@
 # wo
 
+[![Build Status](https://travis-ci.org/wo-app/wo.png)](https://travis-ci.org/wo-app/wo)
+[![Code Climate](https://codeclimate.com/github/wo-app/wo/badges/gpa.svg)](https://codeclimate.com/github/wo-app/wo)
+[![Test Coverage](https://codeclimate.com/github/wo-app/wo/badges/coverage.svg)](https://codeclimate.com/github/wo-app/wo)
+
 CLI and Ruby client for [wo server](https://github.com/wo-app/wo-server)
 
 Instration
