@@ -2,6 +2,7 @@ require 'faraday'
 require 'json'
 require 'yaml'
 require 'thor'
+require 'colorize'
 
 require 'wo/client'
 require 'wo/configure'

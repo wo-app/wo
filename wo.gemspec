@@ -17,4 +17,5 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'faraday', '~> 0.9.0'
   s.add_runtime_dependency 'thor', '~> 0.19.1'
+  s.add_runtime_dependency 'colorize', '~> 0.7.7'
 end

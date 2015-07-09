@@ -18,7 +18,7 @@ module WO
         private
 
         def format
-          "#{bold}#{green}%#{max_length_user_name}s: #{white}%#{max_length_branch}s #{black}%#{max_length_time_ago}s#{clear}"
+          "#{"%#{max_length_user_name}s:".colorize(color: :light_green, bold: true)} #{"%#{max_length_branch}s".colorize(:light_white)}  #{"%#{max_length_time_ago}s".colorize(:light_black)}"
         end
 
         def max_length_user_name
@@ -31,26 +31,6 @@ module WO
 
         def max_length_time_ago
           @max_length_time_ago ||= to_json["users"].map { |user| "#{user["time_ago"]}".length }.max
-        end
-
-        def bold
-          "\e[1m"
-        end
-
-        def green
-          "\e[32m"
-        end
-
-        def white
-          "\e[37m"
-        end
-
-        def black
-          "\e[30m"
-        end
-
-        def clear
-          "\e[0m"
         end
       end
     end
