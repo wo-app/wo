@@ -7,7 +7,11 @@ _wo_hook() {
   repo_path=`git rev-parse --show-toplevel 2>&1`
 
   if [[ "$?" == 0 ]] ; then
-    token=`cat ${repo_path}/.wo 2>&1`
+    if [[ ${WO_FILE_PATH} != "" ]] ; then
+      wo_file=`cat ${WO_FILE_PATH}/.wo 2>&1`
+    else
+      wo_file=`cat ${repo_path}/.wo 2>&1`
+    fi
 
     if [[ "$?" == 0 ]] ; then
       repo=`basename ${repo_path}`
