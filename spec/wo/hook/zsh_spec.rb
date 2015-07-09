@@ -17,11 +17,14 @@ _wo_hook() {
     fi
 
     if [[ "$?" == 0 ]] ; then
-      repo=`basename ${repo_path}`
-      branch=`git rev-parse --abbrev-ref HEAD`
-      user_name=`git config user.name`
+      branch=`git rev-parse --abbrev-ref HEAD 2>&1`
 
-      wo doing ${repo} ${branch} ${user_name}
+      if [[ "$?" == 0 ]] ; then
+        repo=`basename ${repo_path}`
+        user_name=`git config user.name`
+
+        wo doing ${repo} ${branch} ${user_name}
+      fi
     fi
   fi
 }
